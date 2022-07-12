@@ -34,6 +34,10 @@
         margin-top: 0.9375rem;
     }
 
+    
+    .banner_wrapper .banner-content h2::before{
+        width: 50%;
+    }
 
 
 }
@@ -52,7 +56,14 @@
         font-size: 1.0625rem; 
     }
 
+    .client-info>div {
+        justify-content: center;
+    }
 
+    .about_wrapper .client-info:before {
+        top: 0.25rem;
+        left: 2.8125rem;
+    }
 }
 
 @media (max-width: 575px) {
@@ -60,9 +71,12 @@
 
 }
 
-@media (max-width: 390px) {
+@media (max-width: 420px) {
 
     /* top banner */
-
+    .banner_wrapper .banner-content h2::before{
+        width: 50%;
+        left: 35%;
+    }
 }
      
