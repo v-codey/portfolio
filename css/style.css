@@ -265,6 +265,79 @@ p {
     box-shadow: 0 0.5rem 1.75rem rgb(118 85 225 / 50%);
 }
 
+/* 5 Project section */
+
+.project_wrapper .nav-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    margin-right: 0.25rem;
+    color: var(--text-black);
+    text-transform: uppercase;
+}
+
+
+.project_wrapper .nav-link.active {
+    color: var(--secondary-text);
+    background-color: transparent;
+}
+
+.project_wrapper .project-img{
+    position: relative;
+    cursor: pointer;
+}
+
+.project_wrapper .project-img .overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-transition: all .4s ease 0s;
+    -o-transition: all .4s ease 0s;
+    -moz-transition: all .4s ease 0s;
+    transition: all .4s ease 0s;
+}
+
+.project_wrapper .project-img:hover{
+    transform: scale(1.02);
+    transition: transform 0.4s ease 0s;
+}
+
+.project_wrapper .project-img:hover .overlay{
+    background: rgba(77, 87, 222, .5);
+}
+
+.project-img .overlay i {
+    font-size: 6.25rem;
+    color: var(--text-white);
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+
+.project_wrapper .project-img:hover i {
+    opacity: 1;
+    visibility: visible;
+    top: 50%;
+    left: 50%;
+}
+
+
+
+
+
+
 
 
 
