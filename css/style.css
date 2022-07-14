@@ -336,14 +336,71 @@ p {
 
 
 
+/* contact section */
+
+.footer_wrapper .newsletter{
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/subscribe-bg.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 9.375rem 0;
+}
+
+.footer_wrapper input{
+    line-height: 3rem;
+    padding: 0 1.5625rem;
+    border: 0.125rem solid var(--bg-white);
+    background: transparent;
+    font-weight: 400;
+    border-radius: 0.25rem;
+    color: var(--text-white);
+}
+
+.footer_wrapper .form-control:focus{
+    color: var(--text-white);
+    background: rgba(0,0,0, 0.2);
+    border-color: var(--bg-white);
+    outline: 0;
+    box-shadow: none;
+}
+
+.footer_wrapper .form-control::placeholder{
+    color: var(--text-white);
+}
 
 
 
+/* footer */
 
 
+.footer_wrapper .footer-logo img{
+    max-height: 4rem;
+}
 
+.footer_wrapper .social-icons li{
+    margin: .4rem;
+}
 
+.footer_wrapper .social-icons li a{
+    line-height: 1.875rem;
+    font-size: 1.5625rem;
+    display: inline-block;
+    color: var(--text-black);
+    text-align: center;
+    margin: 0 0.625rem;
+}
 
+.footer_wrapper .social-icons li a:hover{
+    color: var(--primary-color);
+}
+
+.footer_wrapper .copyright-text p {
+    font-size: 0.6875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+}
 
 
 
