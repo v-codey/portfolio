@@ -22,7 +22,7 @@ navBar.forEach(function (a){
 
 let hover = document.querySelector("#addhover").getElementsByClassName("col-md-4");
 let hoverEffect = document.querySelector(".hover-effect");
-let listSkill = ["HTML 5", "CSS3", "ES6/Javascript", "jQuery", "Bootstrap 5", "Node.js", "Express" , "mongoDB" , "Github"];
+let listSkill = ["HTML 5", "CSS3", "ES6/Javascript", "jQuery", "Bootstrap 5", "Microsoft .NET", "Microsoft <br> SQL Server" , "Angular JS" , "Github"];
 for(let i = 0; i< hover.length; i++){
     hover[i].addEventListener("mouseover", ()=>{
         hoverEffect.innerHTML = `<h2 class="text-center text-secondary">${listSkill[i]}</h2>`;
