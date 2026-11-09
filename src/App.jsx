@@ -86,70 +86,33 @@ function SideNav({ active, onNavigate }) {
 }
 
 const Monitor = () => <Stroke><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></Stroke>
-const Check = () => <Stroke size={14}><path d="m5 12 5 5 9-10" /></Stroke>
 const THEME_OPTIONS = [
   ['system', 'System', <Monitor key="s" />],
   ['light', 'Light', <Sun key="l" />],
   ['dark', 'Dark', <Moon key="d" />],
 ]
 
-function ThemeMenu({ choice, onChoose }) {
-  const [open, setOpen] = useState(false)
-  const wrap = useRef(null)
-
-  useEffect(() => {
-    if (!open) return
-    const onDown = (e) => { if (!wrap.current?.contains(e.target)) setOpen(false) }
-    const onKey = (e) => { if (e.key === 'Escape') setOpen(false) }
-    document.addEventListener('mousedown', onDown)
-    document.addEventListener('keydown', onKey)
-    return () => {
-      document.removeEventListener('mousedown', onDown)
-      document.removeEventListener('keydown', onKey)
-    }
-  }, [open])
-
-  const [, label, icon] = THEME_OPTIONS.find(([v]) => v === choice)
+// One button that cycles System, Light, Dark, then back to System.
+function ThemeToggle({ choice, onChoose }) {
+  const i = THEME_OPTIONS.findIndex(([v]) => v === choice)
+  const [, label, icon] = THEME_OPTIONS[i]
+  const [nextValue, nextLabel] = THEME_OPTIONS[(i + 1) % THEME_OPTIONS.length]
   return (
-    <div className="theme-menu" ref={wrap}>
-      <button className="theme-btn" aria-label={`Theme: ${label}. Change theme`} aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(!open)}>
-        {icon}
-      </button>
-      {open && (
-        <div className="theme-pop" role="menu" aria-label="Theme">
-          {THEME_OPTIONS.map(([value, text, ic]) => (
-            <button
-              key={value}
-              role="menuitemradio"
-              aria-checked={choice === value}
-              className="theme-opt"
-              onClick={() => { onChoose(value); setOpen(false) }}
-            >
-              {ic}<span>{text}</span>{choice === value && <span className="tick"><Check /></span>}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
+    <button
+      className="theme-btn"
+      aria-label={`Theme: ${label}. Switch to ${nextLabel}`}
+      title={`Theme: ${label}`}
+      onClick={() => onChoose(nextValue)}
+    >
+      {icon}
+    </button>
   )
 }
 
 function Banner() {
   return (
-    <div className="banner" role="img" aria-label="Night sky over mountains">
-      <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#05070d" /><stop offset="1" stopColor="#1b2434" />
-          </linearGradient>
-        </defs>
-        <rect width="600" height="200" fill="url(#sky)" />
-        {[[40,30],[90,70],[150,22],[220,48],[300,18],[370,60],[430,26],[500,52],[560,20],[120,110],[480,100]].map(([x, y]) => (
-          <circle key={x + '-' + y} cx={x} cy={y} r="1" fill="#fff" opacity=".6" />
-        ))}
-        <path d="M0 200V150l50-40 40 30 70-70 60 60 40-30 80-60 70 80 50-30 60 50 80-40v100Z" fill="#2c3748" />
-        <path d="M0 200V170l60-30 50 20 80-50 70 60 60-40 70 50 60-30 70 30v70Z" fill="#0a0e15" />
-      </svg>
+    <div className="banner">
+      <img src="/banner.jpg" alt="" width="3840" height="2160" decoding="async" />
       <p className="quote">{profile.quote}</p>
     </div>
   )
@@ -316,13 +279,13 @@ export default function App() {
       </aside>
 
       {/* Desktop: floating theme toggle, top right */}
-      <div className="theme-float"><ThemeMenu choice={choice} onChoose={chooseTheme} /></div>
+      <div className="theme-float"><ThemeToggle choice={choice} onChoose={chooseTheme} /></div>
 
       {/* Tablet and below: top bar with theme toggle and hamburger */}
       <header className="topbar">
         <Link className="logo" to={{ pathname: '/', hash: 'top' }} aria-label="Vinay Kumar, home">{profile.initials}</Link>
         <div className="topbar-actions">
-          <ThemeMenu choice={choice} onChoose={chooseTheme} />
+          <ThemeToggle choice={choice} onChoose={chooseTheme} />
           <button ref={menuBtn} className="round menu-btn" aria-label="Open menu" aria-expanded={menuOpen} aria-controls="drawer" onClick={() => setMenuOpen(true)}>
             <Menu />
           </button>

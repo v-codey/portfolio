@@ -63,12 +63,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .theme-btn:hover { background: var(--chip); }
 .theme-float { position: fixed; top: 16px; right: 24px; z-index: 12; }
 .theme-float .theme-btn { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25); }
-.theme-menu { position: relative; }
-.theme-pop { position: absolute; top: calc(100% + 8px); right: 0; min-width: 160px; padding: 6px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); z-index: 40; }
-.theme-opt { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; text-align: left; font-weight: 500; }
-.theme-opt:hover { background: var(--card-2); }
-.theme-opt[aria-checked='true'] { color: var(--accent); }
-.theme-opt .tick { margin-left: auto; display: inline-flex; }
 
 /* Sidebar (desktop) */
 .side { position: fixed; top: 0; left: 0; bottom: 0; width: 264px; z-index: 10; background: transparent; border-right: 1px solid var(--line); overflow-y: auto; }
@@ -117,8 +111,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .col { background: transparent; border-inline: 1px solid var(--line); padding-bottom: 32px; max-width: 712px; margin-inline: auto; min-height: 100vh; }
 
 .banner { position: relative; height: 210px; overflow: hidden; }
-.banner svg { width: 100%; height: 100%; display: block; }
-.quote { position: absolute; top: 72px; left: 0; right: 0; text-align: center; font-style: italic; font-weight: 500; color: #fff; padding-inline: 24px; text-wrap: balance; }
+.banner img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 58%; }
+.quote { position: absolute; top: 72px; left: 0; right: 0; text-align: center; font-style: italic; font-weight: 500; color: #fff; text-shadow: 0 1px 12px rgba(10, 8, 30, 0.7); padding-inline: 24px; text-wrap: balance; }
 
 .id { position: relative; padding: 0 24px 24px; border-bottom: 1px solid var(--line); }
 .avatar { display: grid; place-items: center; width: 88px; height: 88px; margin-top: -44px; border-radius: 50%; background: linear-gradient(135deg, #2a3550, #0d1220); border: 4px solid var(--bg); font: 800 25px 'Cabinet Grotesk', sans-serif; color: #fff; position: relative; }
