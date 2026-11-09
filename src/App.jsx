@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, Route, Routes, useLocation } from 'react-router-dom'
-import { profile, experience, work, stack, engineering } from './data'
+import { profile, experience, education, work, stackGroups, engineering, quotes } from './data'
 import { RESUME_URL, RESUME_FILENAME } from './config'
 
 const NAV = [
   ['top', 'About', 'user'],
   ['experience', 'Experience', 'briefcase'],
+  ['education', 'Education', 'cap'],
   ['work', 'Proof of work', 'folder'],
   ['stack', 'Stack', 'layers'],
   ['engineering', 'Engineering', 'branch'],
   ['resume', 'Resume', 'file'],
-  ['connect', 'Connect', 'send'],
+  ['contact', 'Contact', 'send'],
 ]
 
 const I = {
@@ -41,6 +42,7 @@ const NAV_ICONS = {
   folder: <Stroke size={20}><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" /></Stroke>,
   layers: <Stroke size={20}><path d="m12 3 9 5-9 5-9-5ZM3 13l9 5 9-5" /></Stroke>,
   branch: <Stroke size={20}><circle cx="6" cy="6" r="2" /><circle cx="6" cy="18" r="2" /><circle cx="18" cy="8" r="2" /><path d="M6 8v8M18 10c0 4-6 3-12 6" /></Stroke>,
+  cap: <Stroke size={20}><path d="m22 10-10-5-10 5 10 5ZM6 12.5V17c3 2.5 9 2.5 12 0v-4.5" /></Stroke>,
   file: <Stroke size={20}><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8ZM14 3v5h5M9 13h6M9 17h6" /></Stroke>,
   send: <Stroke size={20}><path d="m21 3-9.5 18-2.5-7.5L1.5 11ZM21 3 9 13.5" /></Stroke>,
 }
@@ -49,7 +51,7 @@ function SideNav({ active, onNavigate }) {
   return (
     <div className="side-inner">
       <Link className="side-id" to={{ pathname: '/', hash: 'top' }} onClick={onNavigate}>
-        <span className="side-avatar" aria-hidden="true">{profile.initials}</span>
+        <span className="logo-mark" aria-hidden="true">{profile.initials}</span>
         <span>
           <span className="side-name">{profile.name}</span>
           <span className="side-role">{profile.role}</span>
@@ -76,10 +78,6 @@ function SideNav({ active, onNavigate }) {
           <a className="round md" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Icon d={I.linkedin} size={22} /></a>
           <a className="round md" href={`mailto:${profile.email}`} aria-label="Email"><Mail /></a>
         </div>
-      </div>
-
-      <div className="side-cta">
-        <Link className="resume-btn" to="/resume" onClick={onNavigate}>{NAV_ICONS.file}View resume</Link>
       </div>
     </div>
   )
@@ -119,7 +117,7 @@ function Banner() {
 }
 
 function Accordion({ item }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   const expandable = item.points.length > 0
   const id = item.org.replace(/\W/g, '')
   return (
@@ -144,6 +142,108 @@ function Accordion({ item }) {
         </div>
       )}
     </li>
+  )
+}
+
+const Send = () => <Stroke size={15}><path d="M14.5 21.7a.5.5 0 0 0 .94-.02l6.5-19a.5.5 0 0 0-.64-.64l-19 6.5a.5.5 0 0 0-.02.94l7.93 3.18a2 2 0 0 1 1.11 1.11ZM21.85 2.15 10.9 13.09" /></Stroke>
+
+function ContactSection() {
+  const [sent, setSent] = useState(false)
+  // There is no backend, so the form opens the visitor's email app with the message filled in.
+  const onSubmit = (e) => {
+    e.preventDefault()
+    const f = new FormData(e.currentTarget)
+    const name = f.get('name')
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`)
+    const body = encodeURIComponent(`${f.get('message')}
+
+${name} (${f.get('email')})`)
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
+    setSent(true)
+  }
+  return (
+    <section className="sec reveal contact" id="contact" aria-labelledby="c-h">
+      <h2 id="c-h">Contact</h2>
+
+      <div className="map-box" aria-hidden="true">
+        <img src="/assets/images/india-map.svg" alt="" />
+      </div>
+      {/* The pin gets its own layer above the form so hover and focus always reach it. */}
+      <div className="map-box map-layer">
+        <span className="map-pin" tabIndex={0} role="img" aria-label="Bangalore, India">
+          <span className="pin-bounce">
+            <svg className="pin-svg" viewBox="0 0 24 32" aria-hidden="true">
+              <path d="M12 .75C5.7.75.75 5.7.75 11.9.75 20 12 31.25 12 31.25S23.25 20 23.25 11.9C23.25 5.7 18.3.75 12 .75Z" fill="#4ade80" stroke="#0b3d1f" strokeWidth="1.5" />
+              <circle cx="12" cy="11.8" r="4.2" fill="#0b3d1f" />
+            </svg>
+          </span>
+          <span className="pin-ground" aria-hidden="true" />
+          <span className="pin-tip" aria-hidden="true">Bangalore, India</span>
+        </span>
+      </div>
+
+      <div className="contact-meta">
+        <span className="avail"><span className="dot-green" aria-hidden="true" />Available for new opportunities</span>
+      </div>
+
+      <h3 className="contact-title">Let's work together.</h3>
+      <p className="contact-sub">Have a project or a role in mind? Tell me about it and I'll get back to you.</p>
+
+      <form className="contact-form" onSubmit={onSubmit}>
+        <div className="field-row">
+          <label className="field"><span>Name</span><input name="name" required autoComplete="name" placeholder="Jane Doe" /></label>
+          <label className="field"><span>Email</span><input name="email" type="email" required autoComplete="email" placeholder="jane@example.com" /></label>
+        </div>
+        <label className="field"><span>Message</span><textarea name="message" rows="4" required placeholder="Tell me about your project" /></label>
+        <button type="submit" className="pill solid send-btn">Send message<Send /></button>
+        {sent && <p className="form-note" role="status">Opening your email app. If nothing opens, write to <a href={`mailto:${profile.email}`}>{profile.email}</a>.</p>}
+      </form>
+    </section>
+  )
+}
+
+const QUOTE_INTERVAL_MS = 2 * 60 * 1000
+
+function QuoteCarousel() {
+  const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  // Advance every 2 minutes. Selecting a quote or pausing restarts the timer.
+  useEffect(() => {
+    if (paused) return
+    const t = setTimeout(() => setIndex((i) => (i + 1) % quotes.length), QUOTE_INTERVAL_MS)
+    return () => clearTimeout(t)
+  }, [index, paused])
+
+  const q = quotes[index]
+  return (
+    <section
+      className="quote-sec reveal"
+      aria-roledescription="carousel"
+      aria-label="Quotes"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
+      <figure className="quote-fig" key={index}>
+        <blockquote><p>&ldquo;{q.text}&rdquo;</p></blockquote>
+        <figcaption>
+          <span aria-hidden="true">&mdash;</span> {q.author}
+        </figcaption>
+      </figure>
+      <div className="quote-dots" role="group" aria-label="Choose a quote">
+        {quotes.map((item, i) => (
+          <button
+            key={item.text}
+            className="quote-dot"
+            aria-label={`Quote ${i + 1} of ${quotes.length}`}
+            aria-current={i === index ? 'true' : undefined}
+            onClick={() => setIndex(i)}
+          />
+        ))}
+      </div>
+    </section>
   )
 }
 
@@ -232,6 +332,19 @@ export default function App() {
     }
   }, [menuOpen])
 
+  // Fade sections in shortly after they scroll into view.
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal:not(.is-visible)')
+    if (!('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('is-visible')); return }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target) }
+      })
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' })
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [pathname])
+
   // After each navigation, jump to the #section or back to the top of the page.
   useEffect(() => {
     const el = hash ? document.getElementById(hash.slice(1)) : null
@@ -271,6 +384,7 @@ export default function App() {
 
   return (
     <>
+      <div className="backdrop" aria-hidden="true" />
       <a className="skip" href="#main">Skip to content</a>
 
       {/* Desktop: fixed left sidebar */}
@@ -283,7 +397,7 @@ export default function App() {
 
       {/* Tablet and below: top bar with theme toggle and hamburger */}
       <header className="topbar">
-        <Link className="logo" to={{ pathname: '/', hash: 'top' }} aria-label="Vinay Kumar, home">{profile.initials}</Link>
+        <Link className="logo" to={{ pathname: '/', hash: 'top' }} aria-label="Vinay Kumar, home"><span className="logo-mark" aria-hidden="true">{profile.initials}</span></Link>
         <div className="topbar-actions">
           <ThemeToggle choice={choice} onChoose={chooseTheme} />
           <button ref={menuBtn} className="round menu-btn" aria-label="Open menu" aria-expanded={menuOpen} aria-controls="drawer" onClick={() => setMenuOpen(true)}>
@@ -319,8 +433,9 @@ export default function App() {
               <div className="socials">
                 <a className="round" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Icon d={I.github} /></a>
                 <a className="round" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Icon d={I.linkedin} /></a>
-                <a className="round" href={`mailto:${profile.email}`} aria-label="Email"><Mail /></a>
                 <a className="round" href={`tel:${profile.phone.replace(/\s/g, '')}`} aria-label="Call"><Phone /></a>
+                <Link className="round" to="/resume">{NAV_ICONS.file}</Link>
+                <a className="pill solid" href={`mailto:${profile.email}`}><Mail />Email me</a>
               </div>
             </div>
           </section>
@@ -329,12 +444,17 @@ export default function App() {
             <p><strong>{profile.lead}</strong> {profile.about}</p>
           </section>
 
-          <section className="sec" id="experience" aria-labelledby="exp-h">
+          <section className="sec reveal" id="experience" aria-labelledby="exp-h">
             <h2 id="exp-h">Professional experience</h2>
             <ul className="xp-list">{experience.map((e) => <Accordion key={e.org} item={e} />)}</ul>
           </section>
 
-          <section className="sec" id="work" aria-labelledby="work-h">
+          <section className="sec reveal" id="education" aria-labelledby="edu-h">
+            <h2 id="edu-h">Education</h2>
+            <ul className="xp-list">{education.map((e) => <Accordion key={e.org} item={e} />)}</ul>
+          </section>
+
+          <section className="sec reveal" id="work" aria-labelledby="work-h">
             <h2 id="work-h">Proof of work</h2>
             <div className="grid">
               {work.map((w) => (
@@ -357,27 +477,34 @@ export default function App() {
             </div>
           </section>
 
-          <section className="sec" id="stack" aria-labelledby="stack-h">
+          <section className="sec reveal" id="stack" aria-labelledby="stack-h">
             <h2 id="stack-h">Stack I use</h2>
             <p className="sec-sub">Technologies I work with to build products that solve real problems</p>
-            <ul className="stack">
-              {stack.map(([name, slug, color, url]) => (
-                <li key={name}>
-                  <img
-                    className={`tech-icon ${color ? '' : 'mono'}`}
-                    src={url || `https://cdn.simpleicons.org/${slug}/${color ? color.slice(1) : '000000'}`}
-                    alt=""
-                    width="22"
-                    height="22"
-                    loading="lazy"
-                  />
-                  {name}
-                </li>
+            <div className="stack-groups">
+              {stackGroups.map((g) => (
+                <div className="stack-group" key={g.title} role="group" aria-label={g.title}>
+                  <h3>{g.title}</h3>
+                  <ul className="stack">
+                    {g.items.map(([name, slug, color, url]) => (
+                      <li key={name}>
+                        <img
+                          className={`tech-icon ${color ? '' : 'mono'}`}
+                          src={url || `https://cdn.simpleicons.org/${slug}/${color ? color.slice(1) : '000000'}`}
+                          alt=""
+                          width="22"
+                          height="22"
+                          loading="lazy"
+                        />
+                        {name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </section>
 
-          <section className="sec" id="engineering" aria-labelledby="eng-h">
+          <section className="sec reveal" id="engineering" aria-labelledby="eng-h">
             <h2 id="eng-h">Selected engineering work</h2>
             <ul className="eng">
               {engineering.map((e) => (
@@ -389,25 +516,13 @@ export default function App() {
             </ul>
           </section>
 
-          <section className="cta">
-            <p className="it">If you've read this far, you might be interested in what I do.</p>
-            <a className="pill big-pill" href={`mailto:${profile.email}`}><span className="dot" aria-hidden="true">{profile.initials}</span>Email me</a>
-          </section>
+          <ContactSection />
 
-          <section className="sec" id="connect" aria-labelledby="c-h">
-            <h2 id="c-h">Let's connect</h2>
-            <p className="sec-sub">Find me across code, work and product updates</p>
-            <div className="pills">
-              <a className="pill" href={profile.github} target="_blank" rel="noreferrer"><Icon d={I.github} />GitHub</a>
-              <a className="pill" href={profile.linkedin} target="_blank" rel="noreferrer"><Icon d={I.linkedin} />LinkedIn</a>
-              <a className="pill" href={`mailto:${profile.email}`}><Mail />Mail</a>
-              <a className="pill" href={`tel:${profile.phone.replace(/\s/g, '')}`}><Phone />{profile.phone}</a>
-            </div>
-          </section>
+          <QuoteCarousel />
 
             </>} />
           </Routes>
-          <footer className="foot">© 2026 {profile.name}. Based in Bangalore, India.</footer>
+          <footer className="foot">© {new Date().getFullYear()} - {profile.name}</footer>
         </main>
       </div>
 
