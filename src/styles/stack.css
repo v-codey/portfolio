@@ -1,0 +1,14 @@
+/* Stack: one labelled row per category; tiles wrap onto the next line when space runs out. */
+.stack { display: flex; flex-wrap: wrap; gap: 12px; }
+.stack li { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px 0 12px; border-radius: 12px; background: var(--card-2); border: 1px dashed var(--line); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); font-size: 14px; font-weight: 500; color: var(--fg); }
+.tech-icon { width: 22px; height: 22px; flex: none; }
+:root:not([data-theme='light']) .tech-icon.mono { filter: invert(1); }
+
+.stack-groups { display: grid; gap: 28px; }
+.stack-group { display: grid; grid-template-columns: 104px 1fr; gap: 12px 20px; align-items: start; }
+.stack-group h3 { font-size: 14px; font-weight: 600; color: var(--fg-3); min-height: 48px; display: flex; align-items: center; }
+
+@media (max-width: 640px) {
+  .stack-group { grid-template-columns: 1fr; }
+  .stack-group h3 { min-height: 0; }
+}

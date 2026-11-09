@@ -1,0 +1,16 @@
+/* Proof of work cards. */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+.card > h3 { font-size: 14px; font-weight: 600; }
+.thumb { height: 132px; border-radius: 10px; border: 1px solid var(--line); background: radial-gradient(120% 120% at 50% 110%, rgba(59,108,255,.28), transparent 60%), var(--card-2); display: grid; place-content: center; text-align: center; }
+.thumb p { color: var(--fg-2); font-size: 12px; }
+.thumb .big { font: 800 39px/1 'Cabinet Grotesk', sans-serif; color: var(--fg); margin-bottom: 4px; }
+.card-foot { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.card-foot h4 { font-size: 14px; font-weight: 600; }
+.desc { color: var(--fg-2); font-size: 13px; margin-top: 2px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.tags li { padding: 4px 12px; background: var(--chip); border: 1px solid var(--line); border-radius: 999px; font-size: 11px; font-weight: 500; color: var(--fg-2); }
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,30 @@
+/* Design tokens. Colours, backdrop tuning and logo colours for each theme. */
+:root, :root[data-theme='dark'] {
+  --bg: #121212;
+  --fg: #fafafa;
+  --fg-2: #a8a8a8;
+  --fg-3: #747474;
+  --card: #181818;
+  --card-2: #202020;
+  --line: rgba(255, 255, 255, 0.1);
+  --chip: #262626;
+  /* Backdrop tuning: raise or lower the alpha (last number) to change brightness. */
+  --dot: rgba(255, 255, 255, 0.1);   /* dot brightness */
+  --beam: rgba(255, 255, 255, 0.07);  /* light beam brightness */
+  --dot-gap: 30px;                    /* distance between dots */
+  --link: #3b6cff;
+  --hatch: rgba(255, 255, 255, 0.03);
+  --cta-bg: #fafafa;
+  --cta-fg: #000;
+  --accent: #34e0c2;
+  --logo-bg: #34e0c2;
+  --logo-fg: #0b1a16;
+  --accent-bg: rgba(52, 224, 194, 0.12);
+}
+:root[data-theme='light'] {
+  --bg: #fafafa; --fg: #0a0a0a; --fg-2: #52525b; --fg-3: #8a8a93;
+  --card: #fff; --card-2: #f1f1f3; --line: rgba(0, 0, 0, 0.1); --chip: #ececef;
+  --link: #1d4ed8; --hatch: rgba(0, 0, 0, 0.06); --cta-bg: #0a0a0a; --cta-fg: #fff;
+  --accent: #0f766e; --accent-bg: rgba(15, 118, 110, 0.1); --logo-bg: #0f766e; --logo-fg: #ffffff;
+  --dot: rgba(0, 0, 0, 0.1); --beam: rgba(0, 0, 0, 0.04);
+}

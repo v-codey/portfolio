@@ -1,0 +1,45 @@
+/* Contact: map with Bangalore pin, availability pill and the form. */
+.contact { position: relative; }
+.contact > *:not(.map-box) { position: relative; z-index: 1; }
+.map-box { position: absolute; top: 150px; right: -8px; width: 47%; aspect-ratio: 501 / 570; pointer-events: none; z-index: 0; }
+.map-box img { width: 100%; height: 100%; opacity: .25; display: block; }
+:root:not([data-theme='light']) .map-box img { filter: invert(1); }
+
+.dot-green { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse-green 2.4s ease-out infinite; }
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+.contact-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; }
+.avail { display: inline-flex; align-items: center; gap: 10px; min-height: 32px; padding: 0 16px; border-radius: 999px; font-size: 13px; background: rgba(74, 222, 128, 0.13); border: 1px solid rgba(74, 222, 128, 0.3); }
+.contact-title { margin-top: 28px; font: 700 35px/1.1 'Cabinet Grotesk', sans-serif; letter-spacing: -0.01em; }
+.contact-sub { margin-top: 12px; max-width: 46ch; color: var(--fg-2); }
+
+.contact-form { margin-top: 32px; max-width: 480px; display: grid; gap: 24px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.field { display: block; }
+.field > span { display: block; margin-bottom: 4px; font-size: 13px; font-weight: 500; color: var(--fg-3); }
+.field input, .field textarea { width: 100%; padding: 10px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--fg); font: inherit; border-radius: 0; resize: none; transition: border-color .15s; }
+.field input::placeholder, .field textarea::placeholder { color: var(--fg-3); }
+.field input:focus, .field textarea:focus { border-bottom-color: var(--accent); }
+.send-btn { justify-self: start; min-height: 48px; padding: 0 28px; cursor: pointer; }
+.form-note { font-size: 14px; color: var(--fg-2); }
+.form-note a { color: var(--accent); }
+
+/* Bouncing, spinning location pin on the map. Tip position = Bangalore (32.2% across, 79.7% down). */
+.map-pin { position: absolute; left: 32.2%; top: 79.7%; width: 24px; height: 32px; transform: translate(-50%, -100%); pointer-events: auto; cursor: default; border-radius: 6px; }
+.pin-bounce { display: block; width: 100%; height: 100%; animation: pin-bounce 1.3s cubic-bezier(.3, 0, .4, 1) infinite; }
+.pin-svg { display: block; width: 100%; height: 100%; animation: pin-spin 2.6s linear infinite; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45)); }
+.pin-ground { position: absolute; left: 50%; bottom: -3px; width: 16px; height: 5px; margin-left: -8px; border-radius: 50%; background: rgba(74, 222, 128, 0.45); animation: pin-ground 1.3s cubic-bezier(.3, 0, .4, 1) infinite; }
+.pin-tip { position: absolute; left: 50%; bottom: calc(100% + 16px); transform: translateX(-50%); padding: 4px 10px; border-radius: 8px; background: var(--cta-bg); color: var(--cta-fg); font-size: 12px; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .15s; }
+.map-pin:hover .pin-tip, .map-pin:focus-visible .pin-tip { opacity: 1; }
+@keyframes pin-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
+@keyframes pin-spin { to { transform: rotateY(360deg); } }
+@keyframes pin-ground { 0%, 100% { transform: scale(1); opacity: .9; } 50% { transform: scale(.55); opacity: .4; } }
+.map-layer { z-index: 2; }
+
+@media (max-width: 640px) {
+  .map-box, .map-layer { display: none; }
+  .field-row { grid-template-columns: 1fr; }
+}

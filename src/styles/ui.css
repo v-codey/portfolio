@@ -1,0 +1,36 @@
+/* Reusable UI pieces: logo mark, buttons, pills, theme toggle, back-to-top, scroll reveal. */
+
+/* Logo */
+.logo { width: 44px; height: 44px; display: grid; place-items: center; text-decoration: none; border-radius: 50%; }
+.logo-mark { width: 42px; height: 42px; flex: none; display: inline-grid; place-items: center; border-radius: 50%; border: 2px solid var(--logo-bg); background: linear-gradient(135deg, #2a3550, #0d1220); color: var(--fg); font: 600 15px/20px 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: normal; }
+
+/* Pills (text buttons) */
+.pill { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--card-2); text-decoration: none; font-size: 13px; font-weight: 500; transition: background .15s; }
+.pill.solid { background: var(--cta-bg); color: var(--cta-fg); border-color: transparent; }
+.pill.solid:hover { background: var(--cta-bg); filter: brightness(.9); }
+
+/* Round icon buttons */
+.round { width: 36px; height: 36px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--card-2); text-decoration: none; transition: background .15s; flex: none; }
+.round.md { width: 44px; height: 44px; }
+.round.ghost { visibility: hidden; }
+.round span { display: inline-flex; transition: transform .2s; }
+.round span.flip { transform: rotate(180deg); }
+.round:hover, .pill:hover { background: var(--chip); }
+
+/* Theme toggle: floating top right on desktop, inside the top bar on smaller screens */
+.theme-btn { width: 44px; height: 44px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--card-2); transition: background .15s; }
+.theme-btn:hover { background: var(--chip); }
+.theme-float { position: fixed; top: 16px; right: 24px; z-index: 12; }
+.theme-float .theme-btn { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25); }
+
+/* Back to top */
+.to-top { border: 0; position: fixed; right: 24px; bottom: 24px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--cta-bg); color: var(--cta-fg); box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+
+/* Reveal on scroll: sections fade up shortly after they enter the viewport */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; transition-delay: 60ms; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+@media (max-width: 1024px) {
+  .theme-float { display: none; }
+}

@@ -1,0 +1,39 @@
+/* Page layout: hatched frame + centre column, desktop sidebar, top bar and mobile drawer, footer. */
+
+/* Hatched gutters + centre column */
+.frame { max-width: 790px; margin-inline: auto; margin-left: max(264px, calc((100% + 264px - 900px) / 2)); background-image: repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px 7px); }
+.col { background: transparent; border-inline: 1px solid var(--line); padding-bottom: 32px; max-width: 712px; margin-inline: auto; min-height: 100vh; }
+
+/* Sidebar (desktop) */
+.side { position: fixed; top: 0; left: 0; bottom: 0; width: 264px; z-index: 10; background: transparent; border-right: 1px solid var(--line); overflow-y: auto; }
+.side-inner { min-height: 100%; display: flex; flex-direction: column; }
+.side-id { display: flex; align-items: center; gap: 12px; padding: 20px; border-bottom: 1px solid var(--line); text-decoration: none; }
+.side-name { display: block; font: 700 17px/1.2 'Cabinet Grotesk', sans-serif; }
+.side-role { display: block; font-size: 13px; color: var(--fg-3); }
+.side-inner nav { display: flex; flex-direction: column; gap: 4px; padding: 20px; }
+.side-inner nav a { display: flex; align-items: center; gap: 14px; font-size: 13px; min-height: 40px; padding: 0 14px; border-radius: 10px; text-decoration: none; color: var(--fg-2); font-weight: 900; transition: background .15s, color .15s; }
+.side-inner nav a:hover { background: var(--card-2); color: var(--fg); }
+.side-inner nav a[aria-current] { background: var(--accent-bg); color: var(--accent); }
+.side-socials { margin-top: auto; padding: 20px; border-top: 1px solid var(--line); text-align: center; }
+.side-socials p { font-size: 12px; color: var(--fg-3); margin-bottom: 12px; }
+.side-socials div { display: flex; justify-content: center; gap: 12px; }
+
+/* Top bar + drawer (tablet and below) */
+.topbar { display: none; }
+.topbar-actions { display: flex; align-items: center; gap: 8px; }
+.drawer { position: fixed; inset: 0; z-index: 30; }
+.scrim { position: absolute; inset: 0; border: 0; background: rgba(0, 0, 0, 0.6); }
+.drawer-panel { position: absolute; top: 0; left: 0; bottom: 0; width: min(300px, 85vw); background: var(--bg); border-right: 1px solid var(--line); overflow-y: auto; animation: slide-in .22s ease; }
+.drawer-panel .side-id { padding-right: 72px; min-height: 80px; }
+.close-btn { position: absolute; top: 18px; right: 16px; }
+@keyframes slide-in { from { transform: translateX(-100%); } to { transform: none; } }
+
+/* Footer */
+.foot { margin: 50px 24px 0; padding-top: 16px; border-top: 1px solid var(--line); color: var(--fg-3); font-size: 13px; }
+
+@media (max-width: 1024px) {
+  .side { display: none; }
+  .frame { margin-left: auto; padding-top: 64px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; position: fixed; top: 0; left: 0; right: 0; z-index: 10; height: 64px; padding: 0 16px; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .menu-btn { width: 44px; height: 44px; }
+}

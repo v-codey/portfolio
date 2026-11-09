@@ -1,3 +1,5 @@
+// Site-wide settings. Change values here, not in components.
+
 // Where the resume PDF is loaded from.
 //
 // Static (default): the file in /public, served from this site.
@@ -8,3 +10,6 @@
 // access, and the bucket's CORS and response headers must not block embedding.
 export const RESUME_URL = '/Vinay_Kumar_Full_Stack_Developer.pdf'
 export const RESUME_FILENAME = 'Vinay_Kumar_Full_Stack_Developer.pdf'
+
+// How often the closing quote changes.
+export const QUOTE_INTERVAL_MS = 2 * 60 * 1000

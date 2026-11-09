@@ -1,0 +1,20 @@
+/* Experience and education rows (expandable items). */
+.xp { padding: 16px 0; }
+.xp-head { display: flex; align-items: center; gap: 16px; }
+.mark { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--card-2); border: 1px solid var(--line); font: 700 15px 'Cabinet Grotesk', sans-serif; }
+.xp-text { flex: 1; min-width: 0; }
+.xp-text h3 { font-size: 15px; font-weight: 600; }
+.xp-text .sub { color: var(--fg-2); }
+.clamp { color: var(--fg-3); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.period { color: var(--fg-2); font-size: 13px; white-space: nowrap; }
+.panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .25s ease; margin-left: 56px; }
+.panel.open { grid-template-rows: 1fr; }
+.panel > ul { overflow: hidden; display: grid; gap: 12px; color: var(--fg-2); font-size: 14px; }
+.panel.open > ul { padding-top: 16px; }
+.panel li { padding-left: 16px; position: relative; }
+.panel li::before { content: ''; position: absolute; left: 0; top: .75em; width: 5px; height: 5px; border-radius: 50%; background: var(--fg-3); }
+
+@media (max-width: 640px) {
+  .period { display: none; }
+  .panel { margin-left: 0; }
+}

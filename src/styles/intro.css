@@ -1,0 +1,17 @@
+/* Avatar, name row, quick links and the about paragraph. */
+#top { scroll-margin-top: 80px; }
+.id { position: relative; padding: 0 24px 24px; border-bottom: 1px solid var(--line); }
+.avatar { display: grid; place-items: center; width: 88px; height: 88px; margin-top: -44px; border-radius: 50%; background: linear-gradient(135deg, #2a3550, #0d1220); border: 4px solid var(--bg); font: 800 25px 'Cabinet Grotesk', sans-serif; color: #fff; position: relative; }
+.id-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+h1 { font-size: 35px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+.socials { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.socials .round { width: 44px; height: 44px; }
+
+.about { padding: 24px 24px 0; }
+.about p { color: var(--fg-2); max-width: 62ch; line-height: 1.75; font-size: 16px; }
+.about strong { color: var(--fg); font-weight: 600; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 29px; }
+  .id, .about { padding-inline: 16px; }
+}
