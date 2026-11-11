@@ -21,7 +21,7 @@ export default function Intro() {
   return (
     <>
       <section className="id" aria-labelledby="name">
-        <img className="avatar" src="/avatar.svg" alt="" aria-hidden="true" width="100" height="100" />
+        <img className="avatar" src={`${import.meta.env.BASE_URL}avatar.svg`} alt="" aria-hidden="true" width="100" height="100" />
         <div className="id-row">
           <div>
             <h1 id="name">{profile.name}</h1>

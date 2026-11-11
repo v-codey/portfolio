@@ -7,7 +7,7 @@ export default function ContactMap() {
   return (
     <>
       <div className="map-box" aria-hidden="true">
-        <img src="/assets/images/india-map.svg" alt="" />
+        <img src={`${import.meta.env.BASE_URL}assets/images/india-map.svg`} alt="" />
       </div>
       <div className="map-box map-layer">
         <span className="map-pin" tabIndex={0} role="img" aria-label="Bangalore, India">
