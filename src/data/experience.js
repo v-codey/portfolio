@@ -3,7 +3,7 @@ export const experience = [
     org: 'Turbomodus Pvt Ltd',
     mark: 'T',
     title: 'Associate Engineer, Hyderabad',
-    period: 'Nov 2022 – Apr 2026',
+    period: '2022 – 2026',
     summary: 'Built and maintained ERP modules for inventory, reporting and permissions, used by 800+ businesses.',
     points: [
       'Fixed 50+ production issues across inventory, reporting and permissions modules, covering UI bugs, data inconsistencies and access control flaws.',

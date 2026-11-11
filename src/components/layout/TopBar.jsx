@@ -8,7 +8,7 @@ import { profile } from '@/data'
 export default function TopBar({ menuOpen, onOpenMenu, menuButtonRef, themeChoice, onChooseTheme }) {
   return (
     <header className="topbar">
-      <Link className="logo" to={{ pathname: '/', hash: 'top' }} aria-label={`${profile.name}, home`}>
+      <Link className="logo" to="/" aria-label={`${profile.name}, home`}>
         <LogoMark />
       </Link>
       <div className="topbar-actions">

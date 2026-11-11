@@ -1,12 +1,12 @@
 // Sidebar / drawer links. `id` matches a section id on the home page.
 // Items with a `to` open a separate route instead of scrolling.
 export const NAV_ITEMS = [
-  { id: 'top', label: 'About', icon: 'user' },
   { id: 'experience', label: 'Experience', icon: 'briefcase' },
   { id: 'education', label: 'Education', icon: 'cap' },
+  { id: 'certifications', label: 'Certifications', icon: 'award' },
   { id: 'work', label: 'Proof of work', icon: 'folder' },
   { id: 'stack', label: 'Stack', icon: 'layers' },
-  { id: 'engineering', label: 'Engineering', icon: 'branch' },
+  { id: 'blog', label: 'Blog', icon: 'pen' },
   { id: 'resume', label: 'Resume', icon: 'file', to: '/resume' },
   { id: 'contact', label: 'Contact', icon: 'send' },
 ]

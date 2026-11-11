@@ -1,8 +1,0 @@
-/* Selected engineering work list. */
-.eng { background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
-.eng li { padding: 16px; border-bottom: 1px solid var(--line); }
-.eng li:last-child { border: 0; }
-.eng-top { display: flex; align-items: center; gap: 8px; color: #a78bfa; }
-.eng-top h3 { font-size: 14px; font-weight: 500; color: var(--fg); }
-.tag { font-size: 11px; color: var(--fg-3); }
-.eng p { color: var(--fg-2); font-size: 12px; margin-top: 4px; padding-left: 22px; }

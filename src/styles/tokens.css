@@ -19,6 +19,10 @@
   --accent: #34e0c2;
   --logo-bg: #34e0c2;
   --logo-fg: #0b1a16;
+  /* Avatar: sunset-peach disc behind the navy portrait, with a faint top edge highlight.
+     Previous palette (mist blue): dark #9fb2e0, light #dbe4f7. */
+  --avatar-bg: #e8b996;
+  --avatar-edge: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   --accent-bg: rgba(52, 224, 194, 0.12);
 }
 :root[data-theme='light'] {
@@ -27,4 +31,5 @@
   --link: #1d4ed8; --hatch: rgba(0, 0, 0, 0.06); --cta-bg: #0a0a0a; --cta-fg: #fff;
   --accent: #0f766e; --accent-bg: rgba(15, 118, 110, 0.1); --logo-bg: #0f766e; --logo-fg: #ffffff;
   --dot: rgba(0, 0, 0, 0.1); --beam: rgba(0, 0, 0, 0.04);
+  --avatar-bg: #f1e2cf; --avatar-edge: inset 0 0 0 1px color-mix(in srgb, var(--fg) 10%, transparent);
 }

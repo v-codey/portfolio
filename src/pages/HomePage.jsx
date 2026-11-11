@@ -1,7 +1,8 @@
 import Banner from '@/sections/Banner'
+import BlogSection from '@/sections/BlogSection'
+import CertificationsSection from '@/sections/CertificationsSection'
 import ContactSection from '@/sections/contact/ContactSection'
 import EducationSection from '@/sections/EducationSection'
-import EngineeringSection from '@/sections/EngineeringSection'
 import ExperienceSection from '@/sections/ExperienceSection'
 import Intro from '@/sections/Intro'
 import QuoteCarousel from '@/sections/QuoteCarousel'
@@ -15,9 +16,10 @@ export default function HomePage() {
       <Intro />
       <ExperienceSection />
       <EducationSection />
+      <CertificationsSection />
       <WorkSection />
       <StackSection />
-      <EngineeringSection />
+      <BlogSection />
       <ContactSection />
       <QuoteCarousel />
     </>

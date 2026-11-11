@@ -21,15 +21,16 @@ src/
 ├── config/
 │   └── site.js               Resume URL, quote rotation interval
 ├── data/                     All site content, one file per topic (edit text here)
-│   ├── profile.js  experience.js  education.js  work.js
-│   ├── stack.js  engineering.js  quotes.js  navigation.js
+│   ├── profile.js  experience.js  education.js  certifications.js  work.js
+│   ├── stack.js  blog.js  quotes.js  navigation.js
 │   └── index.js              Barrel: import { profile } from '@/data'
 ├── hooks/                    Reusable behaviour
 │   ├── useTheme.js           System / light / dark theme
 │   ├── useScrollSpy.js       Highlights the section in view
 │   ├── useScrollToHash.js    Scrolls to #sections after navigation
 │   ├── useRevealOnScroll.js  Fade-in on scroll
-│   └── useScrolledPast.js    "Past N px" flag for the back-to-top button
+│   ├── useScrolledPast.js    "Past N px" flag for the back-to-top button
+│   └── useIsPhone.js         Phone detection (swaps Email me / Call me)
 ├── components/
 │   ├── icons/                Inline SVG icon set
 │   ├── ui/                   Small reusable pieces (ThemeToggle, LogoMark, BackToTop, ExpandableItem)

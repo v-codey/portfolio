@@ -32,7 +32,7 @@ export default function AppShell({ children }) {
   return (
     <>
       <Backdrop />
-      <a className="skip" href="#main">Skip to content</a>
+      
 
       <Sidebar active={active} />
 

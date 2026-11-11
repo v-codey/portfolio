@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from '@/components/icons'
+import { ArrowUpRightIcon, GitHubIcon } from '@/components/icons'
 import { work } from '@/data'
 
 export default function WorkSection() {
@@ -18,11 +18,16 @@ export default function WorkSection() {
                 <h4>{item.title}</h4>
                 <p className="desc">{item.text}</p>
               </div>
-              {item.href && (
-                <a className="round" href={item.href} target="_blank" rel="noreferrer" aria-label={`Open ${item.title} on GitHub`}>
-                  <ArrowUpRightIcon />
+              <div className="card-links">
+                <a className="round" href={item.repo} target="_blank" rel="noreferrer" aria-label={`View ${item.title} on GitHub`} title="View on GitHub">
+                  <GitHubIcon />
                 </a>
-              )}
+                {item.live && (
+                  <a className="round" href={item.live} target="_blank" rel="noreferrer" aria-label={`Open the live ${item.title} site`} title="Open live site">
+                    <ArrowUpRightIcon />
+                  </a>
+                )}
+              </div>
             </div>
             <ul className="tags">{item.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
           </article>

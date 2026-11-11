@@ -6,6 +6,7 @@
 .thumb p { color: var(--fg-2); font-size: 12px; }
 .thumb .big { font: 800 39px/1 'Cabinet Grotesk', sans-serif; color: var(--fg); margin-bottom: 4px; }
 .card-foot { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.card-links { display: flex; gap: 8px; flex: none; }
 .card-foot h4 { font-size: 14px; font-weight: 600; }
 .desc { color: var(--fg-2); font-size: 13px; margin-top: 2px; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }

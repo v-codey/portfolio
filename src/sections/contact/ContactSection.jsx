@@ -1,4 +1,4 @@
-import ContactForm from './ContactForm'
+import ContactAction from './ContactAction'
 import ContactMap from './ContactMap'
 
 export default function ContactSection() {
@@ -13,9 +13,10 @@ export default function ContactSection() {
       </div>
 
       <h3 className="contact-title">Let's work together.</h3>
-      <p className="contact-sub">Have a project or a role in mind? Tell me about it and I'll get back to you.</p>
+      <p className="contact-sub">Have a project or a role in mind?</p>
+      <p className="contact-sub">Tell me about it and I'll get back to you.</p>
 
-      <ContactForm />
+      <ContactAction />
     </section>
   )
 }

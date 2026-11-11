@@ -7,7 +7,7 @@ import { NAV_ITEMS, profile } from '@/data'
 export default function SidebarContent({ active, onNavigate }) {
   return (
     <div className="side-inner">
-      <Link className="side-id" to={{ pathname: '/', hash: 'top' }} onClick={onNavigate}>
+      <Link className="side-id" to="/" onClick={onNavigate}>
         <LogoMark />
         <span>
           <span className="side-name">{profile.name}</span>

@@ -2,12 +2,14 @@
 
 /* Logo */
 .logo { width: 44px; height: 44px; display: grid; place-items: center; text-decoration: none; border-radius: 50%; }
-.logo-mark { width: 42px; height: 42px; flex: none; display: inline-grid; place-items: center; border-radius: 50%; border: 2px solid var(--logo-bg); background: linear-gradient(135deg, #2a3550, #0d1220); color: var(--fg); font: 600 15px/20px 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: normal; }
+.logo-mark { width: 42px; height: 42px; flex: none; display: inline-grid; place-items: center; border-radius: 50%; border: 2px solid var(--logo-bg); background: linear-gradient(135deg, #2a3550, #0d1220); color: #fff; font: 600 15px/20px 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: normal; }
 
 /* Pills (text buttons) */
 .pill { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--card-2); text-decoration: none; font-size: 13px; font-weight: 500; transition: background .15s; }
 .pill.solid { background: var(--cta-bg); color: var(--cta-fg); border-color: transparent; }
 .pill.solid:hover { background: var(--cta-bg); filter: brightness(.9); }
+.pill.accent { background: var(--accent); color: var(--logo-fg); border-color: transparent; font-weight: 600; }
+.pill.accent:hover { background: var(--accent); filter: brightness(1.08); }
 
 /* Round icon buttons */
 .round { width: 36px; height: 36px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--card-2); text-decoration: none; transition: background .15s; flex: none; }
